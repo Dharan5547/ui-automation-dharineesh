@@ -16,6 +16,12 @@ The automated test performs the following steps:
 8. Print Title, Author and Publisher into a file
 9. Click on log out
 
+## Test Output
+
+As part of the UI automation flow, the test captures the Book Title, Author, and Publisher details from the Book Store page.
+
+These details are written to a file named `book-result.txt`, which is generated automatically after successful test execution and is available in the project root directory.
+
 ## Tech Stack 
 
 - Playwright
