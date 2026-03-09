@@ -22,7 +22,7 @@ test('UI Assignment', async({ page }) => {
 
     // Upon successful login, Validate username and logout button
     await expect(page.locator('#userName-value')).toHaveText(userName, {timeout: 15000});
-    await expect(page.getByRole('button', {name: 'Log out'})).toBeVisible({timeout: 15000});
+    await expect(page.getByRole('button', {name: 'Logout'})).toBeVisible({timeout: 15000});
 
     // Click on bookstore button
     await page.getByRole('button', {name: 'Go To Book Store'}).click();
@@ -31,14 +31,16 @@ test('UI Assignment', async({ page }) => {
     await page.getByPlaceholder('Type to search').fill('Learning JavaScript Design Patterns');
 
     // Validate the search result to contain this book
-    const bookRow =  page.locator('.rt-tr-group').filter({hasText: 'Learning JavaScript Design Patterns'});
+    const bookRow =  page.locator('tr').filter({hasText: 'Learning JavaScript Design Patterns'});
     await expect(bookRow).toBeVisible();
 
     // Print Title, Author and Publisher into a file
-    const title = await bookRow.locator('.rt-td').nth(1).textContent();
-    const author = await bookRow.locator('.rt-td').nth(2).textContent();
-    const publisher = await bookRow.locator('.rt-td').nth(3).textContent();  
-    const textData = `Title: ${title.trim()}\nAuthor: ${author.trim()}\nPublisher: ${publisher.trim()}`;
+    const title = await bookRow.locator('td').nth(1).textContent();
+    const author = await bookRow.locator('td').nth(2).textContent();
+    const publisher = await bookRow.locator('td').nth(3).textContent();  
+    
+   
+   const textData = `Title: ${title.trim()}\nAuthor: ${author.trim()}\nPublisher: ${publisher.trim()}`;
     fs.writeFileSync('book-result.txt', textData);
 
     // Click on log out
