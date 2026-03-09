@@ -1,4 +1,4 @@
-## QA Automation Assignment - UI Testing
+## QA Automation - UI Testing
 
 This project contains UI automation tests for the DemoQA Book Store Application implemented using Playwright with JavaScript.
 
